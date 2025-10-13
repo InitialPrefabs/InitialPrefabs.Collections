@@ -51,7 +51,6 @@ namespace InitialPrefabs.Collections {
         public static T Peek<T>(this ref NoAllocQueue<T> queue) where T : IEquatable<T> {
             return queue.Ptr[queue.Head];
         }
-
         
         /// <summary>
         /// Attempts to push an element into the Queue.

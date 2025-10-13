@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitialPrefabs.Collections", "InitialPrefabs.Collections\InitialPrefabs.Collections.csproj", "{2406C1F2-8617-4B1A-8C57-7437C3377A1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InitialPrefabs.Collections.Tests", "InitialPrefabs.Collections.Tests\InitialPrefabs.Collections.Tests.csproj", "{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{2406C1F2-8617-4B1A-8C57-7437C3377A1A}.Release|x64.Build.0 = Release|Any CPU
 		{2406C1F2-8617-4B1A-8C57-7437C3377A1A}.Release|x86.ActiveCfg = Release|Any CPU
 		{2406C1F2-8617-4B1A-8C57-7437C3377A1A}.Release|x86.Build.0 = Release|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Debug|x64.Build.0 = Debug|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Debug|x86.Build.0 = Debug|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Release|x64.ActiveCfg = Release|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Release|x64.Build.0 = Release|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Release|x86.ActiveCfg = Release|Any CPU
+		{D35F5B98-ACAB-49B9-AC04-98EB32EC1269}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

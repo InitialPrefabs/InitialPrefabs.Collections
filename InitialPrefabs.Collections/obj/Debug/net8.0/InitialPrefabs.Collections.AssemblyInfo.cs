@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InitialPrefabs.Collections")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8cbe12b03bfb685fef44057809ef0eaac9e2fcb")]
 [assembly: System.Reflection.AssemblyProductAttribute("InitialPrefabs.Collections")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InitialPrefabs.Collections")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
