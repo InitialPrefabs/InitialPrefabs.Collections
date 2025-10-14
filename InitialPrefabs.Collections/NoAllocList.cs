@@ -1,0 +1,102 @@
+using System;
+using System.Runtime.CompilerServices;
+
+namespace InitialPrefabs.Collections {
+
+    public ref struct NoAllocEnumerator<T> {
+        internal Span<T> Ptr;
+        internal int Index;
+        internal int Length;
+        public readonly T Current => Ptr[Index];
+
+        public bool MoveNext() {
+            return ++Index < Length;
+        }
+
+        public void Reset() {
+            Index = -1;
+        }
+    }
+    
+    /// <summary>
+    /// A stackonly list backed by a <see cref="Span{T}"/>. The capacity is fixed, however
+    /// the total number of elements are tracked.
+    /// </summary>
+    public ref struct NoAllocList<T> {
+        public readonly Span<T> Span;
+        public readonly int Capacity;
+        public int Count { get; internal set; }
+
+        public NoAllocList(Span<T> span) {
+            Span = span;
+            Capacity = span.Length;
+            Count = 0;
+        }
+
+        public NoAllocList(Span<T> span, int count) {
+            Span = span;
+            Capacity = span.Length;
+            Count = count;
+        }
+
+        public readonly NoAllocEnumerator<T> GetEnumerator() {
+            return new NoAllocEnumerator<T> {
+                Ptr = Span,
+                Index = -1,
+                Length = Count
+            };
+        }
+
+        public readonly T this[int i] {
+            get => Span[i];
+            set => Span[i] = value;
+        }
+    }
+
+    public static class NoAllocListExtensions {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Clear<T>(this ref NoAllocList<T> list) where T : unmanaged {
+            list.Count = 0;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Add<T>(this ref NoAllocList<T> list, T item) where T : unmanaged {
+            if (list.Count >= list.Capacity) {
+                return;
+            }
+            list.Span[list.Count++] = item;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void RemoveAtSwapback<T>(this ref NoAllocList<T> list, int index) where T : unmanaged {
+            list.Count--;
+            var last = list.Span[list.Count];
+            list.Span[index] = last;
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void RemoveAt<T>(this ref NoAllocList<T> list, int index) where T : unmanaged {
+            list.Count--;
+            for (var i = index; i < list.Count; i++) {
+                list.Span[i] = list.Span[i + 1];
+            }
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static ref T ElementAt<T>(this ref NoAllocList<T> list, int index) where T : unmanaged {
+            return ref list.Span[index];
+        }
+
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static int IndexOf<T>(this in NoAllocList<T> list, T item) where T : unmanaged, IEquatable<T> {
+            for (var i = 0; i < list.Count; i++) {
+                var element = list[i];
+                if (element.Equals(item)) {
+                    return i;
+                }
+            }
+
+            return -1;
+        }
+    }
+}
