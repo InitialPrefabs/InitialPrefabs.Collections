@@ -5,7 +5,7 @@ namespace InitialPrefabs.Collections.Tests {
     public class NoAllocQueueTests {
 
         [Test]
-        public void AddingElementsToTheQueue() {
+        public void FullQueueTest() {
             Assert.Multiple(() => {
                 Span<int> s = stackalloc int[10];
                 NoAllocQueue<int> q = new NoAllocQueue<int>(s);
@@ -27,6 +27,13 @@ namespace InitialPrefabs.Collections.Tests {
                     count++;
                     Assert.That(q.Count == q.Capacity - count);
                 }
+                Assert.That(count == 10, "10 elements should have been processed.");
+
+                q.Enqueue(11);
+                Assert.That(q.Count == 1, "11 should have been enqueued.");
+
+                q.Clear();
+                Assert.That(q.Count == 0, "The queue should have been resetted");
             });
         }
     }

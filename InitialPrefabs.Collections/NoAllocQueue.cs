@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 
 namespace InitialPrefabs.Collections {
 
@@ -48,6 +49,7 @@ namespace InitialPrefabs.Collections {
         /// <remarks>If no elements exist then this method will throw an exception via accessing an invalid element in the Span{T}.</remarks>
         /// </summary>
         /// <returns>The element at the head of the queue.</returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static T Peek<T>(this ref NoAllocQueue<T> queue) where T : IEquatable<T> {
             return queue.Ptr[queue.Head];
         }
@@ -67,6 +69,19 @@ namespace InitialPrefabs.Collections {
             queue.Tail = (queue.Tail + 1) % queue.Capacity;
             queue.Count++;
             return true;
+        }
+        
+        /// <summary>
+        /// Pushes an element into the Queue. This does not check if the max capacity has been hit so any 
+        /// errors thrown by the <see cref="Span{T}"/> are propagated outwards.
+        /// </summary>
+        /// <param name="queue">The queue to push into.</param>
+        /// <param name="item">The element to push.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void Enqueue<T>(this ref NoAllocQueue<T> queue, T item) where T : IEquatable<T> {
+            queue.Ptr[queue.Tail] = item;
+            queue.Tail = (queue.Tail + 1) % queue.Capacity;
+            queue.Count++;
         }
 
         /// <summary>
@@ -117,6 +132,7 @@ namespace InitialPrefabs.Collections {
         /// Removes all elements in the queue.
         /// </summary>
         /// <param name="queue">The queue to remove from.</param>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static void Clear<T>(this ref NoAllocQueue<T> queue) where T : IEquatable<T> {
             queue.Head = 0;
             queue.Tail = 0;
