@@ -6,9 +6,15 @@ allocate on the heap.
 
 All data structures use a supplied `Span<T>` that must be stack allocated.
 
-Data Structures implemented so far:
+## Data Structures implemented so far:
 * `NoAllocList<T>`
 * `NoAllocQueue<T>`
+* `NoAllocHashSet` - tests required
+* `NoAllocBitArray` - tests required
+
+## Planned
+* `NoAllocStack`
+* `NoAllocHashMap`
 
 # Limitations
 The `Span<T>` must fit the stack memory. Because all data structures implement using `ref struct`,
