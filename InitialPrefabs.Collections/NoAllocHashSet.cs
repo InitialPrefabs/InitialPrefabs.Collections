@@ -53,6 +53,12 @@ namespace InitialPrefabs.Collections {
             return false;
         }
 
+        public void Clear() {
+            count = 0;
+            OccupiedFlags.Bytes.Clear();
+            Values.Clear();
+        }
+
         public readonly bool Contains(T item) {
             if (count == 0) {
                 return false;

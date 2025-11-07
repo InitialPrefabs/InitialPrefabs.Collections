@@ -31,6 +31,8 @@ namespace InitialPrefabs.Collections.Tests {
                 }
 
                 Assert.That(!h.TryAdd(int.MaxValue), "The hashset capacity has been reached!");
+                h.Clear();
+                Assert.That(h.Count == 0, "The hashset should be emtpy");
             });
         }
     }

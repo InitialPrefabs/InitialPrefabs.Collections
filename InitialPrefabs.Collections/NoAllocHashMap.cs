@@ -32,6 +32,7 @@ namespace InitialPrefabs.Collections {
             for (var i = 0; i < Values.Length; i++) {
                 var probe = (idx + i) % Values.Length;
                 if (!OccupiedFlags[probe]) {
+                    Keys[probe] = key;
                     Values[probe] = item;
                     OccupiedFlags[probe] = true;
                     count++;
@@ -66,6 +67,13 @@ namespace InitialPrefabs.Collections {
                 }
             }
             return false;
+        }
+
+        public void Clear() {
+            OccupiedFlags.Bytes.Clear();
+            count = 0;
+            Values.Clear();
+            Keys.Clear();
         }
 
         public V this[K key] {
