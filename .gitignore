@@ -2,3 +2,4 @@ obj/
 bin/
 coverageresults/
 InitialPrefabs.Collections.Tests/TestResults/
+.vs/
