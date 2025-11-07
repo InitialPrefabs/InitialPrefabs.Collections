@@ -1,14 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 namespace InitialPrefabs.Collections {
-
-    internal readonly struct UShortComparer : IComparer<ushort> {
-        public readonly int Compare(ushort x, ushort y) {
-            return x.CompareTo(y);
-        }
-    }
 
     public static class MathUtils {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

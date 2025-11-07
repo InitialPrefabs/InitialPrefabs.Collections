@@ -3,11 +3,15 @@ using System.Collections.Generic;
 
 namespace InitialPrefabs.Collections {
 
+    /// <summary>
+    /// A hashset that uses a <see cref="Span{T}"/> as its internal data structure. 
+    /// </summary>
+    /// <typeparam name="T">Any type implementing <see cref="IEquatable{T}"/></typeparam>
     public ref struct NoAllocHashSet<T> where T : IEquatable<T> {
         /// <summary>
         /// Avoid negative integers
         /// </summary>
-        private const int Mask = 0x7FFFFFFF;
+        internal const int Mask = 0x7FFFFFFF;
         internal Span<T> Values;
         internal NoAllocBitArray OccupiedFlags; // Treat this using NoAllocBitArray
         public int Count => count;
@@ -29,6 +33,11 @@ namespace InitialPrefabs.Collections {
             return counter;
         }
 
+        /// <summary>
+        /// Attempts to add an element to the HashSet if it does not exist.
+        /// </summary>
+        /// <param name="item">The value to add</param>
+        /// <returns>True, if added</returns>
         public bool TryAdd(T item) {
             if (Count == Values.Length) {
                 return false;
@@ -53,12 +62,20 @@ namespace InitialPrefabs.Collections {
             return false;
         }
 
+        /// <summary>
+        /// Clears all elements within the <see cref="NoAllocHashSet{T]}"/>
+        /// </summary>
         public void Clear() {
             count = 0;
             OccupiedFlags.Bytes.Clear();
             Values.Clear();
         }
 
+        /// <summary>
+        /// Checks if an element exists in the hash set.
+        /// </summary>
+        /// <param name="item">The element to find</param>
+        /// <returns>True, if it exists, otherwise false</returns>
         public readonly bool Contains(T item) {
             if (count == 0) {
                 return false;

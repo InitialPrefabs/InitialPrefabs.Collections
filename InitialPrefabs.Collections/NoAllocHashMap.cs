@@ -3,9 +3,12 @@ using System.Collections.Generic;
 
 namespace InitialPrefabs.Collections {
 
-    public ref struct NoAllocHashMap<K, V>
-        where K : unmanaged
-        where V : unmanaged {
+    /// <summary>
+    /// A dictionary that stores a key value pair.
+    /// </summary>
+    /// <typeparam name="K">Any type implementing <see cref="IEquatable{T}"/></typeparam>
+    /// <typeparam name="V">Any type</typeparam>
+    public ref struct NoAllocHashMap<K, V> where K : IEquatable<K> {
 
         private const int Mask = 0x7FFFFFFF;
         internal Span<K> Keys;
@@ -21,6 +24,12 @@ namespace InitialPrefabs.Collections {
             count = 0;
         }
 
+        /// <summary>
+        /// Attempts to add a value given a key if it does not exist.
+        /// </summary>
+        /// <param name="key">A unique identifier</param>
+        /// <param name="item">The value to associate with the key</param>
+        /// <returns>True, if successfully added</returns>
         public bool TryAdd(K key, V item) {
             if (Count == Values.Length) {
                 return false;
@@ -46,6 +55,12 @@ namespace InitialPrefabs.Collections {
             return false;
         }
 
+        /// <summary>
+        /// Attempts to get a value given a key.
+        /// </summary>
+        /// <param name="key">The unique id to look for</param>
+        /// <param name="value">The value stored in the hash map</param>
+        /// <returns>True, if successfully retrieved, otherwise false</returns>
         public bool TryGetValue(K key, out V value) {
             value = default;
             if (count == 0) {
@@ -69,6 +84,9 @@ namespace InitialPrefabs.Collections {
             return false;
         }
 
+        /// <summary>
+        /// Removes all elements in the hashmap.
+        /// </summary>
         public void Clear() {
             OccupiedFlags.Bytes.Clear();
             count = 0;
