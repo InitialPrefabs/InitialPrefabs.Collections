@@ -1,13 +1,13 @@
 {
     "name": "com.initialprefabs.collections",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "displayName": "NoAlloc Collections",
     "description": "Stack allocated collections for C#",
     "unity": "6000.0",
     "unityRelease": "0",
     "documentationUrl": "https://github.com/InitialPrefabs/InitialPrefabs.Collections",
-    "changelogUrl": "",
-    "licensesUrl": "",
+    "changelogUrl": "https://github.com/InitialPrefabs/InitialPrefabs.Collections/blob/main/CHANGELOG.md",
+    "licensesUrl": "https://github.com/InitialPrefabs/InitialPrefabs.Collections/blob/main/LICENSE.md",
     "dependencies": {
     },
     "keywords": [
