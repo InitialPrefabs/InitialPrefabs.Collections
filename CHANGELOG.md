@@ -1,3 +1,5 @@
+- 0.2.0
+    - Adds a NoAllocPriorityQueue
 - 0.1.3
     - Bumps up version due to forgetting to update package.json's version #
 - 0.1.2
