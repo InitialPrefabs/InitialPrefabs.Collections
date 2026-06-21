@@ -1,3 +1,5 @@
+- 0.2.1
+    - Fixes the NoAllocBitArray only storing 4 booleans per byte when it should store 8.
 - 0.2.0
     - Adds a NoAllocPriorityQueue
 - 0.1.3

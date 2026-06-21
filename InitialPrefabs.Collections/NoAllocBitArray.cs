@@ -16,8 +16,8 @@ namespace InitialPrefabs.Collections {
 
         public readonly bool Current {
             get {
-                var remappedIndex = Index / 4;
-                var accessor = 1 << (Index % 4);
+                var remappedIndex = Index / 8;
+                var accessor = 1 << (Index % 8);
                 var b = Ptr[remappedIndex];
                 return (b & accessor) > 0;
             }
@@ -38,20 +38,20 @@ namespace InitialPrefabs.Collections {
 
         public NoAllocBitArray(Span<byte> bytes) {
             Bytes = bytes;
-            Length = bytes.Length * 4;
+            Length = bytes.Length * 8;
         }
 
         public bool this[int i] {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             get {
                 ref byte element = ref this.ElementAt(i);
-                int accessor = i % 4;
+                int accessor = i % 8;
                 return ((1 << accessor) & element) > 0;
             }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set {
                 ref byte element = ref this.ElementAt(i);
-                var accessor = i % 4;
+                var accessor = i % 8;
                 byte mask = (byte)(1 << accessor);
                 if (value) {
                     element |= mask;
@@ -63,7 +63,7 @@ namespace InitialPrefabs.Collections {
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static int CalculateSize(int totalBools) {
-            return MathUtils.CeilToIntDivision(totalBools, 4);
+            return MathUtils.CeilToIntDivision(totalBools, 8);
         }
 
         public readonly NoAllocBitArrayEnumerator GetEnumerator() {
@@ -73,7 +73,7 @@ namespace InitialPrefabs.Collections {
 
     public static class NoAllocBitArrayExtensions {
         public static ref byte ElementAt(this ref NoAllocBitArray array, int i) {
-            var index = i / 4;
+            var index = i / 8;
             return ref array.Bytes[index];
         }
     }

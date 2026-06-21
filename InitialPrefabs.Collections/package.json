@@ -1,6 +1,6 @@
 {
     "name": "com.initialprefabs.collections",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "displayName": "NoAlloc Collections",
     "description": "Stack allocated collections for C#",
     "unity": "6000.0",

@@ -10,6 +10,7 @@ from the heap.
 ## Data Structures implemented so far:
 * `NoAllocList<T>`
 * `NoAllocQueue<T>`
+* `NoAllocPriorityQueue<TItem, TPriority, TComparer>`
 * `NoAllocHashSet<T>`
 * `NoAllocBitArray<T>`
 * `NoAllocHashMap<T>`

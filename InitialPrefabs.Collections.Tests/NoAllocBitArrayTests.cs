@@ -10,7 +10,7 @@ namespace InitialPrefabs.Collections.Tests {
                 Span<byte> _bytes = stackalloc byte[NoAllocBitArray.CalculateSize(1)];
                 NoAllocBitArray bitArray = new NoAllocBitArray(_bytes);
 
-                Assert.That(bitArray.Length == 4, "1 byte represents 4 booleans.");
+                Assert.That(bitArray.Length == 8, "1 byte represents 8 booleans.");
 
                 for (int i = 0; i < bitArray.Length; i++) {
                     bitArray[i] = true;
