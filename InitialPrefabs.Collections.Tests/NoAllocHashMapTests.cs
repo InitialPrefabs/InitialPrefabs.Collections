@@ -1,4 +1,3 @@
-using Microsoft.VisualStudio.TestPlatform.ObjectModel.Client.Interfaces;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
