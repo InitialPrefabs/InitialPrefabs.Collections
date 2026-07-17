@@ -3,16 +3,31 @@ using System.Runtime.CompilerServices;
 
 namespace InitialPrefabs.Collections {
 
+    /// <summary>
+    /// A generic stackonly iterator to be used with any kind of collection.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public ref struct NoAllocEnumerator<T> {
         internal Span<T> Ptr;
         internal int Index;
         internal int Length;
+
+        /// <summary>
+        /// Returns a copy of the value at the current iterator.
+        /// </summary>
         public readonly T Current => Ptr[Index];
 
+        /// <summary>
+        /// Increments the iterator until it reaches the end of the collection.
+        /// </summary>
+        /// <returns>True, until the iterator reaches the end of the collection.</returns>
         public bool MoveNext() {
             return ++Index < Length;
         }
 
+        /// <summary>
+        /// Moves the iterator back to the beginning.
+        /// </summary>
         public void Reset() {
             Index = -1;
         }
