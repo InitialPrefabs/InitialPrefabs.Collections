@@ -8,12 +8,12 @@ namespace InitialPrefabs.Collections.Tests {
 
         [Test]
         public void HashmapThrowsExceptionOnInvalidKey() {
-            Assert.Throws<KeyNotFoundException>(() => {
+            Assert.Throws<KeyNotFoundException>(static () => {
                 Span<int> _keys = stackalloc int[10];
                 Span<char> _values = stackalloc char[10];
                 Span<byte> _occupyFlags = stackalloc byte[NoAllocBitArray.CalculateSize(10)];
 
-                NoAllocHashMap<int, char> hashMap = new NoAllocHashMap<int, char>(_keys, _values, new NoAllocBitArray(_occupyFlags));
+                var hashMap = new NoAllocHashMap<int, char>(_keys, _values, new NoAllocBitArray(_occupyFlags));
                 Assert.That(hashMap.TryAdd(10, 'Z'));
                 char actual = hashMap[10];
                 Assert.That(actual == 'Z', "Should have stored Z with the key 10");
@@ -26,11 +26,11 @@ namespace InitialPrefabs.Collections.Tests {
 
         [Test]
         public void FullHashMapTest() {
-            Assert.Multiple(() => {
+            Assert.Multiple(static () => {
                 Span<int> _keys = stackalloc int[10];
                 Span<char> _values = stackalloc char[10];
                 Span<byte> _occupyFlags = stackalloc byte[NoAllocBitArray.CalculateSize(10)];
-                NoAllocHashMap<int, char> hashMap = new NoAllocHashMap<int, char>(_keys, _values, new NoAllocBitArray(_occupyFlags));
+                var hashMap = new NoAllocHashMap<int, char>(_keys, _values, new NoAllocBitArray(_occupyFlags));
 
                 Assert.That(!hashMap.TryGetValue(0, out _), "An empty hash set should not contain any values stored");
 

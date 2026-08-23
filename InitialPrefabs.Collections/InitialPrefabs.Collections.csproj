@@ -5,7 +5,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <LangVersion>9.0</LangVersion>
     <Nullable>disable</Nullable>
-    <Version>0.1.0</Version>
+    <Version>0.2.1</Version>
     <PackageId>NoAllocCollections</PackageId>
     <Description>Collections that do not allocate by themselves. You can pass your own allocated memory via Spans to these data structures.</Description>
     <Authors>InitialPrefabs, Porrith Suong</Authors>

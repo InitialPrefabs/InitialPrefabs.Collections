@@ -6,9 +6,9 @@ namespace InitialPrefabs.Collections.Tests {
     public class NoAllocBitArrayTests {
         [Test]
         public void FullNoAllocBitArrayTests() {
-            Assert.Multiple(() => {
+            Assert.Multiple(static () => {
                 Span<byte> _bytes = stackalloc byte[NoAllocBitArray.CalculateSize(1)];
-                NoAllocBitArray bitArray = new NoAllocBitArray(_bytes);
+                var bitArray = new NoAllocBitArray(_bytes);
 
                 Assert.That(bitArray.Length == 8, "1 byte represents 8 booleans.");
 
@@ -33,12 +33,12 @@ namespace InitialPrefabs.Collections.Tests {
 
         [Test]
         public void CalculateSizeTest() {
-            Assert.Throws<DivideByZeroException>(() => { MathUtils.CeilToIntDivision(0, 0); });
+            Assert.Throws<DivideByZeroException>(static () => { MathUtils.CeilToIntDivision(0, 0); });
         }
 
         [Test]
         public void MinTest() {
-            Assert.Multiple(() => {
+            Assert.Multiple(static () => {
                 Assert.That(MathUtils.Min(0, 0) == 0, "The min between 0 and 0 is 0");
                 Assert.That(MathUtils.Min(0, 1) == 0, "The min between 0 and 1 is 0");
                 Assert.That(MathUtils.Min(-1, 1) == -1, "The min between -1 and 1 is -1");

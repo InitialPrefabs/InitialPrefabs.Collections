@@ -6,9 +6,9 @@ namespace InitialPrefabs.Collections.Tests {
 
         [Test]
         public void FullQueueTest() {
-            Assert.Multiple(() => {
+            Assert.Multiple(static () => {
                 Span<int> s = stackalloc int[10];
-                NoAllocQueue<int> q = new NoAllocQueue<int>(s);
+                var q = new NoAllocQueue<int>(s);
 
                 // Testing queue operations on an emtpy queue
                 Assert.That(q.TryPeek(out _) == false, "Peeking an empty queue is not allowed.");

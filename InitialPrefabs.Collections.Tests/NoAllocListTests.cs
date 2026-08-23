@@ -5,9 +5,9 @@ namespace InitialPrefabs.Collections.Tests {
     public class NoAllocListTests {
         [Test]
         public void FullListTest() {
-            Assert.Multiple(() => {
+            Assert.Multiple(static () => {
                 Span<int> s = stackalloc int[10];
-                NoAllocList<int> l = new NoAllocList<int>(s);
+                var l = new NoAllocList<int>(s);
                 Assert.That(l.Count == 0, "The list should be empty on construction");
                 Assert.That(l.Capacity == s.Length, "The list should match the size of the span");
                 
@@ -58,7 +58,7 @@ namespace InitialPrefabs.Collections.Tests {
                 Assert.That(l.IndexOf(0) == -1, "An empty list should not have any index");
                 
                 // Testing the other constructor with a preset length
-                NoAllocList<int> l2 = new NoAllocList<int>(s, 2);
+                var l2 = new NoAllocList<int>(s, 2);
                 Assert.That(l2.Count == 2, "Using the 2 parameter constructor sets the Length automatically.");
             });
         }
