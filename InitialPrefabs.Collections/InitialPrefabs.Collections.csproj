@@ -13,6 +13,9 @@
     <PackageProjectUrl>https://initialprefabs.com/tools/collections/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/InitialPrefabs/InitialPrefabs.Collections</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup>
