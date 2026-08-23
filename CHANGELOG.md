@@ -8,9 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [Released]
+## [0.2.4] - 2026-08-23
+### Notes
+- Same as version 0.2.2, bumping up to get the ci/cd workflow correct
+
 ## [0.2.3] - 2026-08-23
 ### Notes
-- Same as version 0.2.2
+- Same as version 0.2.2, bumping up to get the ci/cd workflow correct
 
 ## [0.2.2] - 2026-08-23
 
