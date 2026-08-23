@@ -61,7 +61,7 @@ namespace InitialPrefabs.Collections {
         /// <param name="key">The unique id to look for</param>
         /// <param name="value">The value stored in the hash map</param>
         /// <returns>True, if successfully retrieved, otherwise false</returns>
-        public bool TryGetValue(K key, out V value) {
+        public readonly bool TryGetValue(K key, out V value) {
             value = default;
             if (count == 0) {
                 return false;

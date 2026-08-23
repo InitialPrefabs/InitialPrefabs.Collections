@@ -137,7 +137,7 @@ namespace InitialPrefabs.Collections {
         /// <param name="item">The element at the head of the queue.</param>
         /// <param name="priority">The associated priority of the queue.</param>
         /// <returns>True, if there is an element at the end.</returns>
-        public bool TryPeek(out TItem item, out TPriority priority) {
+        public readonly bool TryPeek(out TItem item, out TPriority priority) {
             if (count == 0) {
                 item = default;
                 priority = default;

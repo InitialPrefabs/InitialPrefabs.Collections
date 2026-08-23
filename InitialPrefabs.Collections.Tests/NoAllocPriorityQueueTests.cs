@@ -11,11 +11,11 @@ namespace InitialPrefabs.Collections.Tests {
 
         [Test]
         public void EnqueingTest() {
-            Assert.Multiple(() => {
+            Assert.Multiple(static () => {
                 Span<char> _items = stackalloc char[10];
                 Span<int> _priorities = stackalloc int[10];
 
-                NoAllocPriorityQueue<char, int, IntComparer> queue = new NoAllocPriorityQueue<char, int, IntComparer>(_items, _priorities, default);
+                var queue = new NoAllocPriorityQueue<char, int, IntComparer>(_items, _priorities, default);
 
                 Assert.That(queue.TryDequeue(out _, out _), Is.False);
                 Assert.That(queue.TryPeek(out _, out _), Is.False);
@@ -40,6 +40,14 @@ namespace InitialPrefabs.Collections.Tests {
                 Assert.That(item, Is.EqualTo('a'), "a should come before c, even if the priorities are both 10");
                 Assert.That(priority, Is.EqualTo(10), "The priority of a was 10");
             });
+        }
+
+        [Test]
+        public void CapacityTest() {
+            var _items = Span<char>.Empty;
+            var _priorities = Span<int>.Empty;
+            var queue = new NoAllocPriorityQueue<char, int, IntComparer>(_items, _priorities, default);
+            Assert.That(queue.TryEnqueue('a', 0), Is.False);
         }
     }
 }

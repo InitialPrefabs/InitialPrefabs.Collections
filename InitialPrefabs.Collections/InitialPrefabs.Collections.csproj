@@ -1,10 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>netstandard2.1;net8.0;net9.0;net10.0</TargetFrameworks>
     <ImplicitUsings>disable</ImplicitUsings>
     <LangVersion>9.0</LangVersion>
     <Nullable>disable</Nullable>
+    <Version>0.2.2</Version>
+    <PackageId>NoAllocCollections</PackageId>
+    <Description>Collections that do not allocate by themselves. You can pass your own allocated memory via Spans to these data structures.</Description>
+    <Authors>InitialPrefabs, Porrith Suong</Authors>
+    <Copyright>InitialPrefabs</Copyright>
+    <PackageProjectUrl>https://initialprefabs.com/tools/collections/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InitialPrefabs/InitialPrefabs.Collections<RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
   </PropertyGroup>
 
 </Project>

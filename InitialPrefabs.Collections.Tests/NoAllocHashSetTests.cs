@@ -6,11 +6,11 @@ namespace InitialPrefabs.Collections.Tests {
     public class NoAllocHashSetTests {
         [Test]
         public void FullHashSetTest() {
-            Assert.Multiple(() => {
+            Assert.Multiple(static () => {
                 Span<byte> _bytes = stackalloc byte[3];
-                NoAllocBitArray bitArray = new NoAllocBitArray(_bytes);
+                var bitArray = new NoAllocBitArray(_bytes);
                 Span<int> _ints = stackalloc int[10];
-                NoAllocHashSet<int> h = new NoAllocHashSet<int>(_ints, bitArray);
+                var h = new NoAllocHashSet<int>(_ints, bitArray);
 
                 Assert.That(h.Contains(0) == false, "An empty hashset contains nothing.");
 
