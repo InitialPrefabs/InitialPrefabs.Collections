@@ -1,10 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>netstandard2.1;net8.0;net9.0;net10.0</TargetFramework>
     <ImplicitUsings>disable</ImplicitUsings>
     <LangVersion>9.0</LangVersion>
     <Nullable>disable</Nullable>
+    <Version>0.1.0</Version>
+    <PackageId>NoAllocCollections</PackageId>
+    <Description>Collections that do not allocate by themselves. You can pass your own allocated memory via Spans to these data structures.</Description>
+    <Authors>InitialPrefabs, Porrith Suong</Authors>
   </PropertyGroup>
-
 </Project>
