@@ -1,0 +1,33 @@
+name: Build AOT .NET Project for Windows
+
+on:
+  push:
+    tags:
+      - "*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    permissions:
+      id-token: write
+      actions: write
+      contents: write
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install .NET 10.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Build, Tests, Cover, Pack and Publish (on push tag)
+        shell: bash
+        run: |
+          dotnet tool install --global dotnet-releaser
+          dotnet-releaser run --github-token "${{secrets.GITHUB_TOKEN}}" dotnet-releaser.toml
