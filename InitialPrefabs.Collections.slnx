@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="InitialPrefabs.Collections.Tests/InitialPrefabs.Collections.Tests.csproj" />
+  <Project Path="InitialPrefabs.Collections/InitialPrefabs.Collections.csproj" />
+</Solution>

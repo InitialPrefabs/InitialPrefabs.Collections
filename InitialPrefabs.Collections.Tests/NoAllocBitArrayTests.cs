@@ -33,7 +33,7 @@ namespace InitialPrefabs.Collections.Tests {
 
         [Test]
         public void CalculateSizeTest() {
-            Assert.Throws<DivideByZeroException>(static () => { MathUtils.CeilToIntDivision(0, 0); });
+            Assert.That(static () => { MathUtils.CeilToIntDivision(0, 0); }, Throws.TypeOf<DivideByZeroException>());
         }
 
         [Test]
