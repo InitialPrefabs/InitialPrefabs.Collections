@@ -9,6 +9,14 @@
     <PackageId>NoAllocCollections</PackageId>
     <Description>Collections that do not allocate by themselves. You can pass your own allocated memory via Spans to these data structures.</Description>
     <Authors>InitialPrefabs, Porrith Suong</Authors>
+    <Copyright>InitialPrefabs</Copyright>
+    <PackageProjectUrl>https://initialprefabs.com/tools/collections/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/InitialPrefabs/InitialPrefabs.Collections<RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
   </PropertyGroup>
 
 </Project>
