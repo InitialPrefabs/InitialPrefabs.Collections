@@ -5,6 +5,21 @@ namespace InitialPrefabs.Collections.Tests {
     public class NoAllocQueueTests {
 
         [Test]
+        public void PrefilledQueueTest() {
+            using var _ = Assert.EnterMultipleScope();
+            Span<int> s = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            var q = new NoAllocQueue<int>(s, s.Length);
+            Assert.That(q.Count == q.Capacity);
+
+            var expected = 0;
+            while (!q.IsEmpty) {
+                Assert.That(q.TryDequeue(out var actual), "Failed to dequeue.");
+                Assert.That(expected == actual, "The value is not correct");
+                expected++;
+            }
+        }
+
+        [Test]
         public void FullQueueTest() {
             Assert.Multiple(static () => {
                 Span<int> s = stackalloc int[10];
@@ -15,7 +30,7 @@ namespace InitialPrefabs.Collections.Tests {
                 Assert.That(q.TryDequeue(out _) == false, "Dequeing an empty queue is not allowed.");
                 Assert.That(q.Capacity == 10, "The queue should take the fixed capacity defined by the Span.");
                 Assert.That(q.Count == 0, "No elements should be added to the queue.");
-                
+
                 // Testing enqueing
                 for (int i = 0; i < 10; i++) {
                     Assert.That(q.TryEnqueue(i), $"Failed to enqueue {i}");
@@ -23,7 +38,7 @@ namespace InitialPrefabs.Collections.Tests {
                 }
 
                 Assert.That(q.TryEnqueue(10) == false, "10 should not be enqueued.");
-                
+
                 // Testing dequeing
                 int count = 0;
                 while (!q.IsEmpty) {
@@ -41,7 +56,7 @@ namespace InitialPrefabs.Collections.Tests {
                 q.Enqueue(0);
                 q.Enqueue(1);
                 Assert.That(q.Contains(0), "Contains returns true if the element exists in the Queue.");
-                
+
                 // Testing clearing
                 q.Clear();
                 Assert.That(q.Count == 0, "The queue should have been resetted");
