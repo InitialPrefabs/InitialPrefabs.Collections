@@ -38,6 +38,10 @@ namespace InitialPrefabs.Collections {
             count = 0;
         }
 
+        public NoAllocPriorityQueue(Span<TItem> items, Span<TPriority> priorities, TComparer comparer, int count) : this(items, priorities, comparer) {
+            this.count = count;
+        }
+
         private void Swap(int a, int b) {
             (items[a], items[b]) = (items[b], items[a]);
             (priorities[a], priorities[b]) = (priorities[b], priorities[a]);
