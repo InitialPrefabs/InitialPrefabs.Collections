@@ -15,6 +15,12 @@ namespace InitialPrefabs.Collections {
         public int Count { get; internal set; }
         public bool IsEmpty => Count == 0;
 
+        /// <summary>
+        /// Constructs an empty <see cref="NoAllocQueue{T}"/> treating the
+        /// <paramref name="span"/> as an empty container even if it is filled
+        /// with data.
+        /// </summary>
+        /// <param name="span">The internal backing of the <see cref="NoAllocQueue{T}"/>.</param>
         public NoAllocQueue(Span<T> span) {
             Ptr = span;
             Capacity = span.Length;
@@ -22,10 +28,24 @@ namespace InitialPrefabs.Collections {
             Tail = 0;
             Count = 0;
         }
+
+        /// <summary>
+        /// Constructs a <see cref="NoAllocQueue{T}"/> with a prefilled number 
+        /// of elements. The <paramref name="span"/> must contain valid data.
+        /// </summary>
+        /// <param name="span">The prefilled internal backing of the <see cref="NoAllocQueue{T}"/>.</param>
+        /// <param name="count">The number of prefilled elements the <paramref name="span"/> contains.</param>
+        public NoAllocQueue(Span<T> span, int count) {
+            Ptr = span;
+            Capacity = span.Length;
+            Head = 0;
+            Tail = 0;
+            Count = count;
+        }
     }
 
     public static class NoAllocQueueExtensions {
-        
+
         /// <summary>
         /// Attempts to look at the head of the queue if there are any items available.
         /// <param name="queue">The queue to look at.</param>
@@ -53,7 +73,7 @@ namespace InitialPrefabs.Collections {
         public static T Peek<T>(this ref NoAllocQueue<T> queue) where T : IEquatable<T> {
             return queue.Ptr[queue.Head];
         }
-        
+
         /// <summary>
         /// Attempts to push an element into the Queue.
         /// </summary>
@@ -70,7 +90,7 @@ namespace InitialPrefabs.Collections {
             queue.Count++;
             return true;
         }
-        
+
         /// <summary>
         /// Pushes an element into the Queue. This does not check if the max capacity has been hit so any 
         /// errors thrown by the <see cref="Span{T}"/> are propagated outwards.

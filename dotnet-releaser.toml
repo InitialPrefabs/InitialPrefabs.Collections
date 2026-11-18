@@ -1,0 +1,9 @@
+# configuration file for dotnet-releaser
+[msbuild]
+project = "InitialPrefabs.Collections.slnx"
+[github]
+user = "InitialPrefabs"
+repo = "InitialPrefabs.Collections"
+[nuget]
+user = "psuong"
+trusted_publishing = true

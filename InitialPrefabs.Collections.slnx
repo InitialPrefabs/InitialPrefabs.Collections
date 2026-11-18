@@ -1,9 +1,4 @@
 <Solution>
-  <Configurations>
-    <Platform Name="Any CPU" />
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
   <Project Path="InitialPrefabs.Collections.Tests/InitialPrefabs.Collections.Tests.csproj" />
   <Project Path="InitialPrefabs.Collections/InitialPrefabs.Collections.csproj" />
 </Solution>

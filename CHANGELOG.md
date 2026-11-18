@@ -7,11 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## Released
+## [Released]
 ## [0.2.6] - 2026-11-18
 ### Fixed
 - Adds an additional constructor to preserve use existing data that needs to be stored in between frames as long 
 as the allocated memory exists between frames.
+
+
+## [0.2.5] - 2026-10-09
+### Fixed
+- Adds a count parameter to the `NoAllocQueue<T>` allowing prefilled queues.
+
+## [Released]
+## [0.2.5] - 2026-08-23
+### Notes
+- Same as version 0.2.2, bumping up to get the ci/cd workflow correct
+
+## [0.2.3] - 2026-08-23
+### Notes
+- Same as version 0.2.2, bumping up to get the ci/cd workflow correct
 
 ## [0.2.2] - 2026-08-23
 

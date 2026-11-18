@@ -4,3 +4,5 @@ coverageresults/
 InitialPrefabs.Collections.Tests/TestResults/
 .vs/
 .vscode/
+artifacts-dotnet-releaser
+*.log
