@@ -11,7 +11,7 @@
     <Authors>InitialPrefabs, Porrith Suong</Authors>
     <Copyright>InitialPrefabs</Copyright>
     <PackageProjectUrl>https://initialprefabs.com/tools/collections/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/InitialPrefabs/InitialPrefabs.Collections<RepositoryUrl>
+    <RepositoryUrl>https://github.com/InitialPrefabs/InitialPrefabs.Collections</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
