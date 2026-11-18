@@ -8,7 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [Released]
+## [0.2.8] - 2026-11-18
+### Fixed
+- No user facing changes. Updating the version to fix the unity field in package.json due to mismatch versioning with the Package Manager.
+
 ## [0.2.7] - 2026-11-18
+### Fixed
 - No user facing changes. Version bump for OpenUpm and Nuget for synced changes.
 
 ## [0.2.6] - 2026-11-18
